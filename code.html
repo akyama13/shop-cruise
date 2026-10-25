@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop Cruise - Stock Movements</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#a4f2d2",
+            "on-tertiary-fixed": "#00201d",
+            "on-primary-fixed-variant": "#00513c",
+            "secondary-container": "#b2f0d5",
+            "primary-fixed-dim": "#89d6b7",
+            "surface-tint": "#176b52",
+            "on-tertiary-container": "#7fecde",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#191c1b",
+            "inverse-surface": "#2e3130",
+            "surface": "#f8faf8",
+            "on-tertiary-fixed-variant": "#005049",
+            "on-surface-variant": "#3f4944",
+            "tertiary-fixed": "#89f5e7",
+            "inverse-primary": "#89d6b7",
+            "background": "#f8faf8",
+            "on-secondary-fixed-variant": "#0f503d",
+            "tertiary-fixed-dim": "#6bd8cb",
+            "on-primary-fixed": "#002116",
+            "primary-container": "#176b52",
+            "surface-dim": "#d8dad9",
+            "on-background": "#191c1b",
+            "error-container": "#ffdad6",
+            "surface-bright": "#f8faf8",
+            "error": "#ba1a1a",
+            "on-primary-container": "#9be9c9",
+            "surface-container": "#eceeec",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e6e9e7",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e1e3e1",
+            "outline-variant": "#bec9c2",
+            "surface-container-low": "#f2f4f2",
+            "surface-variant": "#e1e3e1",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#346f5a",
+            "primary": "#00513c",
+            "inverse-on-surface": "#eff1ef",
+            "on-secondary-fixed": "#002117",
+            "tertiary": "#00514a",
+            "secondary-fixed": "#b2f0d5",
+            "outline": "#6f7974",
+            "secondary": "#2d6954",
+            "tertiary-container": "#006b62",
+            "secondary-fixed-dim": "#96d3ba",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "space-xl": "2rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["DM Sans"],
+            "headline-sm": ["DM Sans"],
+            "label-lg": ["DM Sans"],
+            "headline-lg": ["DM Sans"],
+            "label-md": ["DM Sans"],
+            "metric-num": ["DM Sans"],
+            "label-sm": ["DM Sans"],
+            "headline-md": ["DM Sans"],
+            "display-lg": ["DM Sans"],
+            "body-lg": ["DM Sans"],
+            "display-mobile": ["DM Sans"],
+            "body-sm": ["DM Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "metric-num": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-full bg-surface text-on-surface antialiased flex justify-center">
+<!-- Navigation Drawer Overlay -->
+<div class="fixed inset-0 bg-inverse-surface/40 z-50 transition-opacity duration-300 opacity-0 pointer-events-none backdrop-blur-xs" id="drawerOverlay">
+<div class="fixed inset-y-0 left-0 w-72 z-50 bg-surface shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col h-full border-r border-outline-variant" id="drawerPanel">
+<!-- Drawer Header -->
+<div class="p-4 border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold text-label-lg">
+          KC
+        </div>
+<div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">Kirana Copilot</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Store Ledger Suite</p>
+</div>
+</div>
+<button aria-label="Close Drawer" class="p-1 rounded-lg text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform cursor-pointer" id="drawerCloseBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Store Info Banner -->
+<div class="mx-3 my-3 p-3 rounded-lg bg-surface-container border border-outline-variant">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container font-bold flex items-center justify-center text-label-md">
+            SC
+          </div>
+<div class="overflow-hidden">
+<h3 class="text-label-lg font-label-lg truncate text-on-surface font-semibold">Shop Cruise Copilot</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant truncate">Shift #1 Active</p>
+</div>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="flex-1 px-3 py-1 space-y-1 overflow-y-auto">
+<!-- Overview -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high active:bg-surface-container-highest transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_52}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-lg font-label-lg">Overview</span>
+</a>
+<!-- Smart Scan -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high active:bg-surface-container-highest transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_95}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg">Smart Scan</span>
+</a>
+<!-- Quick Sale -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high active:bg-surface-container-highest transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_129}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-lg font-label-lg">Quick Sale</span>
+</a>
+<!-- Stock Movements (ACTIVE) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_5}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync_alt" style="font-variation-settings: 'FILL' 1;">sync_alt</span>
+<span class="text-label-lg font-label-lg">Stock Movements</span>
+</a>
+<!-- Expiry & Alerts -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high active:bg-surface-container-highest transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span class="text-label-lg font-label-lg">Expiry &amp; Alerts</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high active:bg-surface-container-highest transition-colors cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_2}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="text-label-lg font-label-lg">Reports</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-outline-variant p-3 mt-auto bg-surface-container-low">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg flex items-center justify-between border border-outline-variant/60">
+<div class="text-left">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Active GSTIN</p>
+<p class="text-label-md font-label-md text-primary font-bold">27AAAAA0000A1Z5</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified">verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Viewport Container -->
+<div class="w-full max-w-md min-h-screen bg-surface flex flex-col relative pb-24 shadow-2xl">
+<!-- TopAppBar (From Shared Component JSON) -->
+<header class="flex justify-between items-center w-full px-4 h-14 sticky top-0 z-40 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Menu" class="p-2 rounded-lg text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150 flex items-center justify-center cursor-pointer" id="drawerToggleBtn" type="button">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Shop Cruise Copilot</span>
+</div>
+<div class="flex items-center gap-1">
+<a aria-label="Notifications" class="p-2 rounded-lg text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150 relative flex items-center justify-center cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
+</a>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 py-3 space-y-4">
+<!-- Page Header with Utility CTA -->
+<section class="flex items-start justify-between gap-3 pt-1">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface tracking-tight">Stock Movements</h1>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> LIVE
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 leading-snug">
+            Real-time audit log of all inbound shipments, counter sales, and adjustments.
+          </p>
+</div>
+<a class="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg border border-primary text-primary hover:bg-secondary-container/30 active:scale-95 transition-all text-label-md font-label-md bg-surface-container-lowest shadow-sm cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_2}}">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>Export CSV</span>
+</a>
+</section>
+<!-- KPI Snapshot Pill Bar -->
+<section class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/60 shadow-sm flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Inward Today</span>
+<span class="text-headline-sm font-headline-sm font-bold text-primary mt-0.5">+195 pkts</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant text-[10px]">1 GRN Entry</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/60 shadow-sm flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Outward Sales</span>
+<span class="text-headline-sm font-headline-sm font-bold text-error mt-0.5">-20 units</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant text-[10px]">₹830.00 Gross</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/60 shadow-sm flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Shrinkage / Dmg</span>
+<span class="text-headline-sm font-headline-sm font-bold text-amber-700 mt-0.5">-5 units</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant text-[10px]">1 Write-off</span>
+</div>
+</section>
+<!-- Search & Filters Segment -->
+<section class="space-y-2.5">
+<!-- Search Input -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant pointer-events-none text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-10 py-2.5 bg-surface-container-lowest rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body-md font-body-md text-on-surface placeholder:text-outline placeholder:text-body-sm outline-none transition-all shadow-sm" placeholder="Filter by product name, batch #, reference ID..." type="text"/>
+<button aria-label="Clear or filter" class="absolute right-2.5 p-1 rounded-md text-on-surface-variant hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Filter Chips (Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 -mx-4 px-4">
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-primary-container text-on-primary text-label-sm font-label-sm shadow-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span>All Activity (148)</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span class="text-primary font-bold">+</span>
+<span>Received (+)</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span class="text-error font-bold">-</span>
+<span>Sales (-)</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span>Returns (↺)</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span>Damage (✕)</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span>Adjustments (±)</span>
+</button>
+</div>
+</section>
+<!-- Live Sync Status Banner -->
+<section class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low border border-outline-variant/60 text-on-surface-variant text-body-sm font-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="cloud_done">cloud_done</span>
+<span>Auto-synced with store cloud 1m ago • All 148 logs verified</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant cursor-pointer hover:rotate-180 transition-transform duration-300" data-icon="sync">sync</span>
+</section>
+<!-- Stock Movement Feed Cards -->
+<section class="space-y-3">
+<!-- Feed Item 1: Sales Outward -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="arrow_upward">arrow_upward</span> Quick Counter Sale
+                </span>
+<span class="text-body-sm font-body-sm text-outline">Today, 10:14 AM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Fortune Sunlite Sunflower Oil 1L</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-error tracking-tight">-2 pkts</div>
+<span class="text-label-md font-label-md text-on-surface-variant">₹290.00</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-label-md border border-outline-variant/40">
+                #FT-2024-B4
+              </span>
+<span class="inline-flex items-center gap-0.5 text-[11px] text-secondary font-label-md">
+<span class="material-symbols-outlined text-[13px]" data-icon="auto_awesome">auto_awesome</span> FEFO Auto-allocated
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm">Counter POS sale (UPI)</span>
+<span class="text-[11px] font-semibold text-primary font-label-md bg-secondary-container/40 px-1.5 py-0.5 rounded">
+                #SALE-8921
+              </span>
+</div>
+</div>
+</article>
+<!-- Feed Item 2: Received Inbound -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="arrow_downward">arrow_downward</span> Smart Scan Inward
+                </span>
+<span class="text-body-sm font-body-sm text-outline">Today, 09:32 AM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Parle-G Gold Biscuits 1kg</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">+192 pkts</div>
+<span class="text-label-md font-label-md text-on-surface-variant">8 ctns</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-label-md border border-outline-variant/40">
+                #PG-24M09
+              </span>
+<span class="text-[11px] text-on-surface-variant font-label-md">
+                Exp: 12/06/2025
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm truncate max-w-[140px]">Metro Wholesale Invoice</span>
+<span class="text-[11px] font-semibold text-primary font-label-md bg-secondary-container/40 px-1.5 py-0.5 rounded">
+                #GRN-4029
+              </span>
+</div>
+</div>
+</article>
+<!-- Feed Item 3: Damage / Leakage -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-amber-600"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="broken_image">broken_image</span> Damage Write-off
+                </span>
+<span class="text-body-sm font-body-sm text-outline">Today, 07:45 AM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Dettol Antiseptic 250ml</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-amber-700 tracking-tight">-5 units</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Shrinkage</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-label-md border border-outline-variant/40">
+                #DT-912A
+              </span>
+<span class="text-[11px] text-amber-800 font-label-md">Carton drop in transit</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold text-outline font-label-md bg-surface-container px-1.5 py-0.5 rounded">
+                #DMG-041
+              </span>
+</div>
+</div>
+</article>
+<!-- Feed Item 4: Sales Outward -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="point_of_sale">point_of_sale</span> Quick Counter Sale
+                </span>
+<span class="text-body-sm font-body-sm text-outline">Yesterday, 08:50 PM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Britannia Good Day Butter 200g</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-error tracking-tight">-18 units</div>
+<span class="text-label-md font-label-md text-on-surface-variant">₹540.00</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-label-md border border-outline-variant/40">
+                #GD-11B
+              </span>
+<span class="text-[11px] text-on-surface-variant font-label-md">Evening rush sale</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold text-primary font-label-md bg-secondary-container/40 px-1.5 py-0.5 rounded">
+                #SALE-8894
+              </span>
+</div>
+</div>
+</article>
+<!-- Feed Item 5: Vendor Return -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="replay">replay</span> Vendor Return
+                </span>
+<span class="text-body-sm font-body-sm text-outline">Yesterday, 04:15 PM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Amul Butter 500g</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight">-10 pkts</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Credit Note</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface text-[11px] font-label-md border border-outline-variant/40">
+                #AM-093X
+              </span>
+<span class="text-[11px] text-amber-700 font-label-md">Near expiry return</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold text-outline font-label-md bg-surface-container px-1.5 py-0.5 rounded">
+                #RET-109
+              </span>
+</div>
+</div>
+</article>
+<!-- Feed Item 6: Inventory Adjustment -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/60 shadow-sm relative overflow-hidden transition-all hover:border-outline">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex items-start justify-between gap-2">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="tune">tune</span> Stock Audit Adjustment
+                </span>
+<span class="text-body-sm font-body-sm text-outline">22 Oct, 11:00 AM</span>
+</div>
+<h2 class="text-body-lg font-body-lg font-bold text-on-surface pt-1 leading-snug">Tata Salt 1kg</h2>
+</div>
+<div class="text-right shrink-0">
+<div class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">+3 pkts</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Surplus</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container-high flex flex-wrap items-center justify-between text-body-sm font-body-sm gap-y-1 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline text-[11px] font-label-md border border-outline-variant/40">
+                Unbatched FMCG
+              </span>
+<span class="text-[11px] text-on-surface-variant font-label-md">Shelf count surplus</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold text-primary font-label-md bg-secondary-container/40 px-1.5 py-0.5 rounded">
+                #ADJ-008
+              </span>
+</div>
+</div>
+</article>
+</section>
+<!-- Empty / Filter Reset State Showcase Section -->
+<section class="mt-4 p-4 rounded-xl border border-dashed border-outline-variant bg-surface-container-low/60 text-center space-y-2">
+<div class="w-10 h-10 mx-auto rounded-full bg-surface-container-highest flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[22px]" data-icon="filter_list_off">filter_list_off</span>
+</div>
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface font-semibold">End of recent timeline</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xs mx-auto mt-0.5">
+            Looking for historical audits older than 30 days? Adjust search filters or query cloud records.
+          </p>
+</div>
+<div class="pt-1 flex justify-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-primary text-label-md font-label-md hover:bg-surface-container active:scale-95 transition-all" type="button">
+            Reset Filters
+          </button>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary text-label-md font-label-md hover:bg-surface-tint active:scale-95 transition-all" type="button">
+            Load 100 More
+          </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (From Shared Component JSON) -->
+<!-- Destinations: Overview, Scan, Quick Sale, Alerts -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface px-2 shadow-md max-w-md mx-auto right-0">
+<!-- Tab 1: Overview -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container transition-colors active:scale-95 transition-transform duration-150 cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_52}}">
+<span class="material-symbols-outlined text-[22px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">Overview</span>
+</a>
+<!-- Tab 2: Scan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container transition-colors active:scale-95 transition-transform duration-150 cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_95}}">
+<span class="material-symbols-outlined text-[22px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-label-sm font-label-sm mt-0.5">Scan</span>
+</a>
+<!-- Tab 3: Quick Sale -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container transition-colors active:scale-95 transition-transform duration-150 cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_129}}">
+<span class="material-symbols-outlined text-[22px]" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm mt-0.5">Quick Sale</span>
+</a>
+<!-- Tab 4: Alerts -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container transition-colors active:scale-95 transition-transform duration-150 cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined text-[22px]" data-icon="warning">warning</span>
+<span class="text-label-sm font-label-sm mt-0.5">Alerts</span>
+</a>
+</nav>
+</div>
+<!-- Drawer Micro-Interactions Script -->
+<script>
+  const drawerToggleBtn = document.getElementById('drawerToggleBtn');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerPanel = document.getElementById('drawerPanel');
+
+  function openDrawer() {
+    if (!drawerOverlay || !drawerPanel) return;
+    drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+    drawerOverlay.classList.add('opacity-100');
+    drawerPanel.classList.remove('-translate-x-full');
+    drawerPanel.classList.add('translate-x-0');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (!drawerOverlay || !drawerPanel) return;
+    drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+    drawerOverlay.classList.remove('opacity-100');
+    drawerPanel.classList.add('-translate-x-full');
+    drawerPanel.classList.remove('translate-x-0');
+    document.body.style.overflow = '';
+  }
+
+  if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', openDrawer);
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) closeDrawer();
+    });
+  }
+</script>
+</body></html>
